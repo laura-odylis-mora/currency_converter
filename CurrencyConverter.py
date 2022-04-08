@@ -4,6 +4,7 @@
 
 # to import everyting defined in the module
 from graphics import *
+import flag
 from Button import Button
 from EasyRectangle import EasyRectangle
 
@@ -13,26 +14,117 @@ class Converter:
         self.convrect = EasyRectangle(0, 0, 176, 176)
         self.convrect.setFill('LightBlue')
 
-        self.input_text1 = Entry(Point(-24, 26), 14)
+        self.input_text = Entry(Point(-50, 50), 14)
 
         self.quit_button = Button(82, 82, 8, 8, 'Red', 'X')
-        self.clear_button = Button(-23, 0, 30, 10, 'Light Green', 'Clear')
+        self.clear_button = Button(0, 30, 18, 7, 'Ivory', 'Clear')
+
+        self.convert_button = Button(0, 50, 24, 7, 'YellowGreen', 'Convert')
 
         #self.usd1_button = Button()
 
-        self.result = EasyRectangle(0, -30, 60, 10)
-        self.result.setFill('LightYellow')
-        self.result_text = Text(Point(0, -24), '')
+        self.result = EasyRectangle(50, 50, 28, 7)
+        self.result.setOutline('GhostWhite')
+        self.result.setFill('Gray')
+        self.result_text = Text(Point(50, 50), '')
+
+        self.instruct1 = Text(Point(-50, 20), 'Pick starting currency')
+        self.instruct1.setSize(18)
+
+        self.disclaimer = Text(
+            Point(-35, 80), 'Currency Rate as of \" Insert Date \". Currency rates subject to change')
+
+        self.instruct2 = Text(Point(55, 20), 'Pick ending currency')
+        self.instruct2.setSize(18)
+
+        self.bwp_1_button = Button(-50, 10, 60, 7,
+                                   'DarkSalmon', flag.flagize("Botswana BWP :BW:"))
+        self.cad_1_button = Button(-50, 1, 60, 7,
+                                   'DarkSalmon', flag.flagize("Canada CAD :CA:"))
+        self.eur_1_button = Button(-50, -8, 60, 7,
+                                   'DarkSalmon', flag.flagize("Eur. Union EUR :EU:"))
+        self.gbp_1_button = Button(-50, -17, 60, 7,
+                                   'DarkSalmon', flag.flagize("Great Britain GBP :GB:"))
+        self.jpy_1_button = Button(-50, -26, 60, 7,
+                                   'DarkSalmon', flag.flagize("Japan JPY :JP:"))
+        self.mad_1_button = Button(-50, -35, 60, 7,
+                                   'DarkSalmon', flag.flagize("Morocco MAD :MA:"))
+        self.nio_1_button = Button(-50, -44, 60, 7,
+                                   'DarkSalmon', flag.flagize("Nicaragua NIO :NI:"))
+        self.nzd_1_button = Button(-50, -53, 60, 7,
+                                   'DarkSalmon', flag.flagize("New Zealand NZD :NZ:"))
+        self.rsd_1_button = Button(-50, -62, 60, 7,
+                                   'DarkSalmon', flag.flagize("Serbia RSD :RS:"))
+        self.usd_1_button = Button(-50, -71, 60, 7,
+                                   'DarkSalmon', flag.flagize("United States USD :US:"))
+
+        self.bwp_2_button = Button(50, 10, 60, 7,
+                                   'DarkSalmon', flag.flagize("Botswana BWP :BW:"))
+        self.cad_2_button = Button(
+            50, 1, 60, 7, 'DarkSalmon', flag.flagize("Canada CAD :CA:"))
+        self.eur_2_button = Button(50, -8, 60, 7,
+                                   'DarkSalmon', flag.flagize("Eur. Union EUR :EU:"))
+        self.gbp_2_button = Button(50, -17, 60, 7,
+                                   'DarkSalmon', flag.flagize("Great Britain GBP :GB:"))
+        self.jpy_2_button = Button(
+            50, -26, 60, 7, 'DarkSalmon', flag.flagize("Japan JPY :JP:"))
+        self.mad_2_button = Button(50, -35, 60, 7,
+                                   'DarkSalmon', flag.flagize("Morocco MAD :MA:"))
+        self.nio_2_button = Button(50, -44, 60, 7,
+                                   'DarkSalmon', flag.flagize("Nicaragua NIO :NI:"))
+        self.nzd_2_button = Button(50, -53, 60, 7,
+                                   'DarkSalmon', 'New Zealand NZD')
+        self.rsd_2_button = Button(
+            50, -62, 60, 7, 'DarkSalmon', flag.flagize("Serbia RSD :RS:"))
+        self.usd_2_button = Button(50, -71, 60, 7,
+                                   'DarkSalmon', flag.flagize("United States USD :US:"))
 
     def draw(self, win):
         self.convrect.draw(win)
-        self.input_text1.draw(win)
+        self.input_text.draw(win)
         self.quit_button.draw(win)
         self.clear_button.draw(win)
+        self.result.draw(win)
         self.result_text.draw(win)
+        self.convert_button.draw(win)
+        self.instruct1.draw(win)
+        self.instruct2.draw(win)
+        self.bwp_1_button.draw(win)
+        self.cad_1_button.draw(win)
+        self.eur_1_button.draw(win)
+        self.gbp_1_button.draw(win)
+        self.jpy_1_button.draw(win)
+        self.mad_1_button.draw(win)
+        self.nio_1_button.draw(win)
+        self.nzd_1_button.draw(win)
+        self.rsd_1_button.draw(win)
+        self.usd_1_button.draw(win)
+        self.bwp_2_button.draw(win)
+        self.cad_2_button.draw(win)
+        self.eur_2_button.draw(win)
+        self.gbp_2_button.draw(win)
+        self.jpy_2_button.draw(win)
+        self.mad_2_button.draw(win)
+        self.nio_2_button.draw(win)
+        self.nzd_2_button.draw(win)
+        self.rsd_2_button.draw(win)
+        self.usd_2_button.draw(win)
+        self.disclaimer.draw(win)
+
+    # Clears the display of all text
+    def clear(self):
+        self.input_text.setText('')
+        self.result_text.setText('')
+
+    def highlightButton(self, country):
+        self.country.setFill('DarkSalmon')
+
+    def unhighlightButton(self, country):
+        self.country.setFill('Gold')
 
     # Loop which runs the converter
     # Checks to see if the click was on a button
+
     def run(self, win):
         while True:
             p = win.getMouse()  # Waits for mouse click
@@ -48,6 +140,7 @@ def main():
 
     conv = Converter()
     conv.draw(win)
+
     conv.run(win)
 
     win.close()
