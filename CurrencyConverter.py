@@ -2,7 +2,12 @@
 # choosing. The exchange rates are variable but they will be fixed from a certain
 # source and date as noted on the converter; the converter provides an estimate.
 
+# Structural Pattern Matching Sources
+# ^[https://stackoverflow.com/questions/60208/replacements-for-switch-statement-in-python]
+# ^[https://docs.python.org/3/whatsnew/3.10.html]
+
 # Library flag emojis
+# ^[https://flag.readthedocs.io/en/latest/]
 from graphics import *
 import flag
 
@@ -11,6 +16,7 @@ from Button import Button
 from EasyRectangle import EasyRectangle
 
 # Exachange Rates and Converter Function API
+#  ^[https://forex-python.readthedocs.io/en/latest/index.html]
 from forex_python.converter import CurrencyRates
 
 
@@ -41,8 +47,8 @@ class Converter:
         self.instruct2 = Text(Point(55, 20), 'Pick ending currency')
         self.instruct2.setSize(18)
 
-        self.bwp_1_button = Button(-50, 10, 60, 7,
-                                   'DarkSalmon', flag.flagize("Botswana BWP :BW:"))
+        self.mxn_1_button = Button(-50, 10, 60, 7,
+                                   'DarkSalmon', flag.flagize("Mexico MXN :MX:"))
         self.cad_1_button = Button(-50, 1, 60, 7,
                                    'DarkSalmon', flag.flagize("Canada CAD :CA:"))
         self.eur_1_button = Button(-50, -8, 60, 7,
@@ -51,19 +57,19 @@ class Converter:
                                    'DarkSalmon', flag.flagize("Great Britain GBP :GB:"))
         self.jpy_1_button = Button(-50, -26, 60, 7,
                                    'DarkSalmon', flag.flagize("Japan JPY :JP:"))
-        self.mad_1_button = Button(-50, -35, 60, 7,
-                                   'DarkSalmon', flag.flagize("Morocco MAD :MA:"))
-        self.nio_1_button = Button(-50, -44, 60, 7,
-                                   'DarkSalmon', flag.flagize("Nicaragua NIO :NI:"))
+        self.aud_1_button = Button(-50, -35, 60, 7,
+                                   'DarkSalmon', flag.flagize("Australia AUD :AU:"))
+        self.brl_1_button = Button(-50, -44, 60, 7,
+                                   'DarkSalmon', flag.flagize("Brazil BRL :BR:"))
         self.nzd_1_button = Button(-50, -53, 60, 7,
                                    'DarkSalmon', flag.flagize("New Zealand NZD :NZ:"))
-        self.rsd_1_button = Button(-50, -62, 60, 7,
-                                   'DarkSalmon', flag.flagize("Serbia RSD :RS:"))
+        self.hkd_1_button = Button(-50, -62, 60, 7,
+                                   'DarkSalmon', flag.flagize("Hong Kong HKD :HK:"))
         self.usd_1_button = Button(-50, -71, 60, 7,
                                    'DarkSalmon', flag.flagize("United States USD :US:"))
 
-        self.bwp_2_button = Button(50, 10, 60, 7,
-                                   'DarkSalmon', flag.flagize("Botswana BWP :BW:"))
+        self.mxn_2_button = Button(50, 10, 60, 7,
+                                   'DarkSalmon', flag.flagize("Mexico MXN :MX:"))
         self.cad_2_button = Button(
             50, 1, 60, 7, 'DarkSalmon', flag.flagize("Canada CAD :CA:"))
         self.eur_2_button = Button(50, -8, 60, 7,
@@ -72,14 +78,14 @@ class Converter:
                                    'DarkSalmon', flag.flagize("Great Britain GBP :GB:"))
         self.jpy_2_button = Button(
             50, -26, 60, 7, 'DarkSalmon', flag.flagize("Japan JPY :JP:"))
-        self.mad_2_button = Button(50, -35, 60, 7,
-                                   'DarkSalmon', flag.flagize("Morocco MAD :MA:"))
-        self.nio_2_button = Button(50, -44, 60, 7,
-                                   'DarkSalmon', flag.flagize("Nicaragua NIO :NI:"))
+        self.aud_2_button = Button(50, -35, 60, 7,
+                                   'DarkSalmon', flag.flagize("Australia AUD :AU:"))
+        self.brl_2_button = Button(50, -44, 60, 7,
+                                   'DarkSalmon', flag.flagize("Brazil BRL :BR:"))
         self.nzd_2_button = Button(50, -53, 60, 7,
                                    'DarkSalmon', 'New Zealand NZD')
-        self.rsd_2_button = Button(
-            50, -62, 60, 7, 'DarkSalmon', flag.flagize("Serbia RSD :RS:"))
+        self.hkd_2_button = Button(
+            50, -62, 60, 7, 'DarkSalmon', flag.flagize("Hong Kong HKD :HK:"))
         self.usd_2_button = Button(50, -71, 60, 7,
                                    'DarkSalmon', flag.flagize("United States USD :US:"))
 
@@ -94,38 +100,41 @@ class Converter:
         self.convert_button.draw(win)
         self.instruct1.draw(win)
         self.instruct2.draw(win)
-        self.bwp_1_button.draw(win)
+        self.mxn_1_button.draw(win)
         self.cad_1_button.draw(win)
         self.eur_1_button.draw(win)
         self.gbp_1_button.draw(win)
         self.jpy_1_button.draw(win)
-        self.mad_1_button.draw(win)
-        self.nio_1_button.draw(win)
+        self.aud_1_button.draw(win)
+        self.brl_1_button.draw(win)
         self.nzd_1_button.draw(win)
-        self.rsd_1_button.draw(win)
+        self.hkd_1_button.draw(win)
         self.usd_1_button.draw(win)
-        self.bwp_2_button.draw(win)
+        self.mxn_2_button.draw(win)
         self.cad_2_button.draw(win)
         self.eur_2_button.draw(win)
         self.gbp_2_button.draw(win)
         self.jpy_2_button.draw(win)
-        self.mad_2_button.draw(win)
-        self.nio_2_button.draw(win)
+        self.aud_2_button.draw(win)
+        self.brl_2_button.draw(win)
         self.nzd_2_button.draw(win)
-        self.rsd_2_button.draw(win)
+        self.hkd_2_button.draw(win)
         self.usd_2_button.draw(win)
         self.disclaimer.draw(win)
 
     # Return input as Float otherwise statement about inputting numbers only
     def get_entry_value(self, entry):
-        try:
-            x = float(entry.getText())
-        except:
-            x = None
-            self.result_text.setText("Input must be a number")
+        # try:
+        #     x = entry.getText()
+        # except:
+        #     x = None
+        #     self.result_text.setText("Input must be a number")
+        # return x
+        x = entry.getText()
         return x
 
     # Display Result
+
     def display_result(self, result):
         self.result_text.setText(str(result))
         # self.result_text.setText(float(result))
@@ -148,41 +157,81 @@ class Converter:
 
     def run(self, win):
         while True:
+            rate_of_currency = CurrencyRates()
             input_amount = self.get_entry_value(self.input_text)
+            print(type(input_amount))
             country1 = ""
             country2 = ""
             p1 = win.getMouse()  # Waits for mouse click
 
-            match p1:
-                case self.clear_button.clicked(p1):
-                    self.clear()
-                case self.quit_button.clicked(p1):
-                    break
-                case self.usd_1_button.clicked(p1):
-                    country1 = 'USD'
-                case _:  # write errror message saying pick what country's currency you starting with
-                    print('some error message')
+            if self.clear_button.clicked(p1):
+                self.clear()
+            elif self.usd_1_button.clicked(p1):
+                country1 = 'USD'
+            elif self.nzd_1_button.clicked(p1):
+                country1 = 'NZD'
+            elif self.cad_1_button.clicked(p1):
+                country1 = 'CAD'
+            elif self.eur_1_button.clicked(p1):
+                country1 = 'EUR'
+            elif self.gbp_1_button.clicked(p1):
+                country1 = 'GBP'
+            elif self.jpy_1_button.clicked(p1):
+                country1 = 'JPY'
+            elif self.aud_1_button.clicked(p1):
+                country1 = 'AUD'
+            elif self.mxn_1_button.clicked(p1):
+                country1 = 'MXN'
+            elif self.hkd_1_button.clicked(p1):
+                country1 = 'HKD'
+            elif self.brl_1_button.clicked(p1):
+                country1 = 'BRL'
+            elif self.quit_button.clicked(p1):
+                break
+            else:  # write errror message saying pick what country's currency you starting with
+                print('some error message')
 
             p2 = win.getMouse()
 
-            match p2:
-                case self.clear_button.clicked(p2):
-                    self.clear()
-                case self.quit_button.clicked(p2):
-                    break
-                case self.usd_2_button.clicked(p2):
-                    country2 = 'USD'
-                case _:
-                    <action_wildcard >
+            if self.clear_button.clicked(p2):
+                self.clear()
+            elif self.quit_button.clicked(p2):
+                break
+            elif self.usd_2_button.clicked(p2):
+                country2 = 'USD'
+            elif self.nzd_2_button.clicked(p2):
+                country2 = 'NZD'
+            elif self.cad_2_button.clicked(p2):
+                country2 = 'CAD'
+            elif self.eur_2_button.clicked(p2):
+                country2 = 'EUR'
+            elif self.gbp_2_button.clicked(p2):
+                country2 = 'GBP'
+            elif self.jpy_2_button.clicked(p2):
+                country2 = 'JPY'
+            elif self.aud_2_button.clicked(p2):
+                country2 = 'AUD'
+            elif self.mxn_2_button.clicked(p2):
+                country2 = 'MXN'
+            elif self.hkd_2_button.clicked(p2):
+                country2 = 'HKD'
+            elif self.brl_2_button.clicked(p2):
+                country2 = 'BRL'
+            else:
+                print("Change this to warning")
 
             p3 = win.getMouse()
 
-            match p3:
-                case self.clear_button.clicked(p3):
-                    self.clear()
-                case self.quit_button.clicked(p3):
-                    break
-                case self.convert_button.clicked(p3):
+            if self.clear_button.clicked(p3):
+                self.clear()
+            elif self.quit_button.clicked(p3):
+                break
+            elif self.convert_button.clicked(p3):
+                print(rate_of_currency.convert(
+                    country1, country2, str(input_amount)))
+
+            else:
+                print("Change this to warning")
 
 
 def main():
@@ -193,8 +242,6 @@ def main():
 
     conv = Converter()
     conv.draw(win)
-
-    rate_of_currency = CurrencyRates()
 
     conv.run(win)
 
