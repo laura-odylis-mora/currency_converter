@@ -124,13 +124,11 @@ class Converter:
 
     # Return input as Float otherwise statement about inputting numbers only
     def get_entry_value(self, entry):
-        # try:
-        #     x = entry.getText()
-        # except:
-        #     x = None
-        #     self.result_text.setText("Input must be a number")
-        # return x
-        x = entry.getText()
+        try:
+            x = float(entry.getText())
+        except:
+            x = None
+            self.result_text.setText("Input must be a number")
         return x
 
     # Display Result
@@ -158,7 +156,11 @@ class Converter:
     def run(self, win):
         while True:
             rate_of_currency = CurrencyRates()
+            x1 = self.get_entry_value(self.input_text1)
             input_amount = self.get_entry_value(self.input_text)
+            print(type(input_amount))
+            value = input_amount
+
             print(type(input_amount))
             country1 = ""
             country2 = ""
@@ -227,8 +229,10 @@ class Converter:
             elif self.quit_button.clicked(p3):
                 break
             elif self.convert_button.clicked(p3):
-                print(rate_of_currency.convert(
-                    country1, country2, str(input_amount)))
+                check_float = isinstance(input_amount, float)
+                if check_float == True:
+                    print(rate_of_currency.convert(
+                        country1, country2, value))
 
             else:
                 print("Change this to warning")
