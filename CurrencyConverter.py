@@ -8,8 +8,13 @@
 
 # Library flag emojis
 # ^[https://flag.readthedocs.io/en/latest/]
+from signal import pause
 from graphics import *
 import flag
+
+# import keyboard
+from decimal import Decimal
+
 
 # to import everyting defined in the module
 from Button import Button
@@ -43,6 +48,11 @@ class Converter:
 
         self.disclaimer = Text(
             Point(-35, 80), 'Currency Rate as of \" Insert Date \". Currency rates subject to change')
+
+        self.warning1 = Text(
+            Point(-50, 65), 'Input starting value as whole number')
+        self.warning2 = Text(
+            Point(-50, 58), ' with 0 cents (format example: 1.00)')
 
         self.instruct2 = Text(Point(55, 20), 'Pick ending currency')
         self.instruct2.setSize(18)
@@ -90,6 +100,7 @@ class Converter:
                                    'DarkSalmon', flag.flagize("United States USD :US:"))
 
     # Draw Buttons and Graphics Window
+
     def draw(self, win):
         self.convrect.draw(win)
         self.input_text.draw(win)
@@ -121,15 +132,31 @@ class Converter:
         self.hkd_2_button.draw(win)
         self.usd_2_button.draw(win)
         self.disclaimer.draw(win)
+        self.warning1.draw(win)
+        self.warning2.draw(win)
+
+    # # Pause for keybaord input
+    # def pause():
+    #     while True:
+    #         if keyboard.read_key() == ('space'):
+    #             break
 
     # Return input as Float otherwise statement about inputting numbers only
+
     def get_entry_value(self, entry):
-        try:
-            x = float(entry.getText())
-        except:
-            x = None
-            self.result_text.setText("Input must be a number")
+        # try:
+        x = entry.getText()
         return x
+        # except:
+        #     x = None
+        # return x
+    # def get_entry_value(self, entry):
+    #     print("Input Starting Value (Whole Number): ")
+    #     x = str(entry.getText())
+    #     # check_int = isinstance(x, int)
+    #     # while check_int == False:
+    #     #     self.result_text.setText("Input must be a positive integer.")
+    #     #     x = int(entry.getText())
 
     # Display Result
 
@@ -155,11 +182,12 @@ class Converter:
 
     def run(self, win):
         while True:
+            # rate_of_currency = CurrencyRates(force_decimal=True)
             rate_of_currency = CurrencyRates()
-            x1 = self.get_entry_value(self.input_text1)
+            # y = self.get_entry_value(self.input_text)
             input_amount = self.get_entry_value(self.input_text)
             print(type(input_amount))
-            value = input_amount
+            # value = input_amount
 
             print(type(input_amount))
             country1 = ""
@@ -229,11 +257,10 @@ class Converter:
             elif self.quit_button.clicked(p3):
                 break
             elif self.convert_button.clicked(p3):
-                check_float = isinstance(input_amount, float)
-                if check_float == True:
-                    print(rate_of_currency.convert(
-                        country1, country2, value))
-
+                # self.display_result(rate_of_currency.convert(
+                #     country1, country2,  Decimal(input_amount)))
+                self.display_result(
+                    rate_of_currency.get_rate(country1, country2))
             else:
                 print("Change this to warning")
 
