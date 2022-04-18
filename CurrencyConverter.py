@@ -152,6 +152,7 @@ class Converter:
 
     # Function that converts (amount) using exchange rate
     # def convert_function(x, start_curr, end_curr):
+    # converted_amount = input_amount/exchange_rate
 
     # Display Result
 
@@ -174,7 +175,6 @@ class Converter:
             # y = self.get_entry_value(self.input_text)
             input_amount = self.get_entry_value(self.input_text)
             print(type(input_amount))
-            # value = input_amount
 
             print(type(input_amount))
             country1 = ""
@@ -268,12 +268,12 @@ class Converter:
             elif self.convert_button.clicked(p3):
                 # self.display_result(rate_of_currency.convert(
                 #     country1, country2,  Decimal(input_amount)))
-                #this displays the exchange rate, intermediary step
+                # this displays the exchange rate, intermediary step
                 exchange_rate = rate_of_currency.get_rate(country1, country2)
                 self.display_result(exchange_rate)
-                #code to use exchange rate to convert and display final amount
-                #converted_amount = input_amount/exchange_rate
-                #self.display_result(converted_amount)
+                # code to use exchange rate to convert and display final amount
+
+                # self.display_result(converted_amount)
             else:
                 print("Convert/clear/quit button error")
 
