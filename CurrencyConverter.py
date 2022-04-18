@@ -135,12 +135,6 @@ class Converter:
         self.warning1.draw(win)
         self.warning2.draw(win)
 
-    # # Pause for keybaord input
-    # def pause():
-    #     while True:
-    #         if keyboard.read_key() == ('space'):
-    #             break
-
     # Return input as Float otherwise statement about inputting numbers only
     def get_entry_value(self, entry):
         try:
@@ -151,8 +145,9 @@ class Converter:
         return x
 
     # Function that converts (amount) using exchange rate
-    # def convert_function(x, start_curr, end_curr):
-    # converted_amount = input_amount/exchange_rate
+    def convert_function(x, exchange_rate):
+        converted_amount = x/exchange_rate
+        return converted_amount
 
     # Display Result
 
@@ -273,7 +268,7 @@ class Converter:
                 self.display_result(exchange_rate)
                 # code to use exchange rate to convert and display final amount
 
-                # self.display_result(converted_amount)
+                self.display_result(convert_function(input_amount, exchange_rate))
             else:
                 print("Convert/clear/quit button error")
 
