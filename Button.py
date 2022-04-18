@@ -22,6 +22,7 @@ class Button:
         self.rect.draw(win)
         self.label.draw(win)
 
+    # Undraw buttown (created for Calculator.py Program)
     def undraw(self):
         self.rect.undraw()
         self.label.undraw()
@@ -33,3 +34,7 @@ class Button:
             return True
         else:
             return False
+
+    # New Function: Change fill of rect
+    def changeFill(self, color):
+        self.rect.setFill(color)

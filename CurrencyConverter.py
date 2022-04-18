@@ -47,12 +47,7 @@ class Converter:
         self.instruct1.setSize(18)
 
         self.disclaimer = Text(
-            Point(-35, 80), 'Currency Rate as of \" Insert Date \". Currency rates subject to change')
-
-        self.warning1 = Text(
-            Point(-50, 65), 'Input starting value as whole number')
-        self.warning2 = Text(
-            Point(-50, 58), ' with 0 cents (format example: 1.00)')
+            Point(-35, 80), 'Currency Exchange Rates obtained from forex-python library')
 
         self.instruct2 = Text(Point(55, 20), 'Pick ending currency')
         self.instruct2.setSize(18)
@@ -132,21 +127,20 @@ class Converter:
         self.hkd_2_button.draw(win)
         self.usd_2_button.draw(win)
         self.disclaimer.draw(win)
-        self.warning1.draw(win)
-        self.warning2.draw(win)
 
     # Return input as Float otherwise statement about inputting numbers only
     def get_entry_value(self, entry):
         try:
             x = float(entry.getText())
+            print(type(x))
         except:
             x = None
             print("Must be a number ")
         return x
 
     # Function that converts (amount) using exchange rate
-    def convert_function(x, exchange_rate):
-        converted_amount = x/exchange_rate
+    def convert_function(self, x, exchange_rate):
+        converted_amount = x * exchange_rate
         return converted_amount
 
     # Display Result
@@ -165,110 +159,113 @@ class Converter:
 
     def run(self, win):
         while True:
-            # rate_of_currency = CurrencyRates(force_decimal=True)
-            rate_of_currency = CurrencyRates()
-            # y = self.get_entry_value(self.input_text)
-            input_amount = self.get_entry_value(self.input_text)
-            print(type(input_amount))
-
-            print(type(input_amount))
             country1 = ""
             country2 = ""
             p1 = win.getMouse()  # Waits for mouse click
 
+            # Gets rate of currency
+            rate_of_currency = CurrencyRates()
+
+            # Input starting amount
+            input_amount = self.get_entry_value(self.input_text)
+
             if self.clear_button.clicked(p1):
                 self.clear()
-                # self.mxn_1_button.setFill('DarkSalmon')
-                # self.cad_1_button.setFill('')
-                # self.eur_1_button.unhighlightButton
-                # self.gbp_1_button.unhighlightButton
-                # self.jpy_1_button.unhighlightButton
-                # self.aud_1_button.unhighlightButton
-                # self.brl_1_button.unhighlightButton
-                # self.nzd_1_button.unhighlightButton
-                # self.hkd_1_button.unhighlightButton
-                # self.usd_1_button.unhighlightButton
-                # self.mxn_2_button.unhighlightButton
-                # self.cad_2_button.unhighlightButton
-                # self.eur_2_button.unhighlightButton
-                # self.gbp_2_button.unhighlightButton
-                # self.jpy_2_button.unhighlightButton
-                # self.aud_2_button.unhighlightButton
-                # self.brl_2_button.unhighlightButton
-                # self.nzd_2_button.unhighlightButton
-                # self.hkd_2_button.unhighlightButton
-                # self.usd_2_button.unhighlightButton
-            elif self.usd_1_button.clicked(p1):
-                country1 = 'USD'
-                # self.usd_1_button.setFill('Gold')
-            elif self.nzd_1_button.clicked(p1):
-                country1 = 'NZD'
-            elif self.cad_1_button.clicked(p1):
-                country1 = 'CAD'
-            elif self.eur_1_button.clicked(p1):
-                country1 = 'EUR'
-            elif self.gbp_1_button.clicked(p1):
-                country1 = 'GBP'
-            elif self.jpy_1_button.clicked(p1):
-                country1 = 'JPY'
-            elif self.aud_1_button.clicked(p1):
-                country1 = 'AUD'
-            elif self.mxn_1_button.clicked(p1):
-                country1 = 'MXN'
-                self.mxn_1_button.highlightButton
-            elif self.hkd_1_button.clicked(p1):
-                country1 = 'HKD'
-            elif self.brl_1_button.clicked(p1):
-                country1 = 'BRL'
+                self.mxn_1_button.changeFill('DarkSalmon')
+                self.cad_1_button.changeFill('DarkSalmon')
+                self.eur_1_button.changeFill('DarkSalmon')
+                self.gbp_1_button.changeFill('DarkSalmon')
+                self.jpy_1_button.changeFill('DarkSalmon')
+                self.aud_1_button.changeFill('DarkSalmon')
+                self.brl_1_button.changeFill('DarkSalmon')
+                self.nzd_1_button.changeFill('DarkSalmon')
+                self.hkd_1_button.changeFill('DarkSalmon')
+                self.usd_1_button.changeFill('DarkSalmon')
+                self.mxn_2_button.changeFill('DarkSalmon')
+                self.cad_2_button.changeFill('DarkSalmon')
+                self.eur_2_button.changeFill('DarkSalmon')
+                self.gbp_2_button.changeFill('DarkSalmon')
+                self.jpy_2_button.changeFill('DarkSalmon')
+                self.aud_2_button.changeFill('DarkSalmon')
+                self.brl_2_button.changeFill('DarkSalmon')
+                self.nzd_2_button.changeFill('DarkSalmon')
+                self.hkd_2_button.changeFill('DarkSalmon')
+                self.usd_2_button.changeFill('DarkSalmon')
             elif self.quit_button.clicked(p1):
                 break
-            else:  # write errror message saying pick what country's currency you starting with
-                print('Country1 button error')
-
-            p2 = win.getMouse()
-
-            if self.clear_button.clicked(p2):
-                self.clear()
-            elif self.quit_button.clicked(p2):
-                break
-            elif self.usd_2_button.clicked(p2):
+            elif self.usd_1_button.clicked(p1):
+                country1 = 'USD'
+                self.usd_1_button.changeFill('Gold')
+            elif self.nzd_1_button.clicked(p1):
+                country1 = 'NZD'
+                self.nzd_1_button.changeFill('Gold')
+            elif self.cad_1_button.clicked(p1):
+                country1 = 'CAD'
+                self.cad_1_button.changeFill('Gold')
+            elif self.eur_1_button.clicked(p1):
+                country1 = 'EUR'
+                self.eur_1_button.changeFill('Gold')
+            elif self.gbp_1_button.clicked(p1):
+                country1 = 'GBP'
+                self.gbp_1_button.changeFill('Gold')
+            elif self.jpy_1_button.clicked(p1):
+                country1 = 'JPY'
+                self.jpy_1_button.changeFill('Gold')
+            elif self.aud_1_button.clicked(p1):
+                country1 = 'AUD'
+                self.aud_1_button.changeFill('Gold')
+            elif self.mxn_1_button.clicked(p1):
+                country1 = 'MXN'
+                self.mxn_1_button.changeFill('Gold')
+            elif self.hkd_1_button.clicked(p1):
+                country1 = 'HKD'
+                self.hkd_1_button.changeFill('Gold')
+            elif self.brl_1_button.clicked(p1):
+                country1 = 'BRL'
+                self.brl_1_button.changeFill('Gold')
+            elif self.usd_2_button.clicked(p1):
                 country2 = 'USD'
-            elif self.nzd_2_button.clicked(p2):
+                self.usd_2_button.changeFill('Gold')
+            elif self.nzd_2_button.clicked(p1):
                 country2 = 'NZD'
-            elif self.cad_2_button.clicked(p2):
+                self.nzd_2_button.changeFill('Gold')
+            elif self.cad_2_button.clicked(p1):
                 country2 = 'CAD'
-            elif self.eur_2_button.clicked(p2):
+                self.cad_2_button.changeFill('Gold')
+            elif self.eur_2_button.clicked(p1):
                 country2 = 'EUR'
-            elif self.gbp_2_button.clicked(p2):
+                self.eur_2_button.changeFill('Gold')
+            elif self.gbp_2_button.clicked(p1):
                 country2 = 'GBP'
-            elif self.jpy_2_button.clicked(p2):
+                self.gbp_2_button.changeFill('Gold')
+            elif self.jpy_2_button.clicked(p1):
                 country2 = 'JPY'
-            elif self.aud_2_button.clicked(p2):
+                self.jpy_2_button.changeFill('Gold')
+            elif self.aud_2_button.clicked(p1):
                 country2 = 'AUD'
-            elif self.mxn_2_button.clicked(p2):
+                self.aud_2_button.changeFill('Gold')
+            elif self.mxn_2_button.clicked(p1):
                 country2 = 'MXN'
-            elif self.hkd_2_button.clicked(p2):
+                self.mxn_2_button.changeFill('Gold')
+            elif self.hkd_2_button.clicked(p1):
                 country2 = 'HKD'
-            elif self.brl_2_button.clicked(p2):
+                self.hkd_2_button.changeFill('Gold')
+            elif self.brl_2_button.clicked(p1):
                 country2 = 'BRL'
-            else:
-                print("Country2 button error")
-
-            p3 = win.getMouse()
-
-            if self.clear_button.clicked(p3):
-                self.clear()
-            elif self.quit_button.clicked(p3):
-                break
-            elif self.convert_button.clicked(p3):
+                self.brl_2_button.changeFill('Gold')
+            elif self.convert_button.clicked(p1):
                 # self.display_result(rate_of_currency.convert(
                 #     country1, country2,  Decimal(input_amount)))
                 # this displays the exchange rate, intermediary step
                 exchange_rate = rate_of_currency.get_rate(country1, country2)
-                self.display_result(exchange_rate)
-                # code to use exchange rate to convert and display final amount
 
-                self.display_result(convert_function(input_amount, exchange_rate))
+                self.display_result(exchange_rate)
+
+                # code to use exchange rate to convert and display final amount
+                final_amount = round(self.convert_function(
+                    input_amount, exchange_rate), 2)
+
+                self.display_result(final_amount)
             else:
                 print("Convert/clear/quit button error")
 
