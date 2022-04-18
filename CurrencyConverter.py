@@ -142,21 +142,16 @@ class Converter:
     #             break
 
     # Return input as Float otherwise statement about inputting numbers only
-
     def get_entry_value(self, entry):
-        # try:
-        x = entry.getText()
+        try:
+            x = float(entry.getText())
+        except:
+            x = None
+            print("Must be a number ")
         return x
-        # except:
-        #     x = None
-        # return x
-    # def get_entry_value(self, entry):
-    #     print("Input Starting Value (Whole Number): ")
-    #     x = str(entry.getText())
-    #     # check_int = isinstance(x, int)
-    #     # while check_int == False:
-    #     #     self.result_text.setText("Input must be a positive integer.")
-    #     #     x = int(entry.getText())
+
+    # Function that converts (amount) using exchange rate
+    # def convert_function(x, start_curr, end_curr):
 
     # Display Result
 
@@ -164,18 +159,10 @@ class Converter:
         self.result_text.setText(str(result))
         # self.result_text.setText(float(result))
 
-    # Clears the display of all text
+    # Clears the display of all text and unhilights buttons
     def clear(self):
         self.input_text.setText('')
         self.result_text.setText('')
-
-    # Highlight chosen button when button clicked
-    def highlightButton(self, country):
-        self.country.setFill('DarkSalmon')
-
-    # Unhighlight buttons when "clear" function runs
-    def unhighlightButton(self, country):
-        self.country.setFill('Gold')
 
     # Loop which runs the converter
     # Checks to see if the click was on a button
@@ -196,8 +183,29 @@ class Converter:
 
             if self.clear_button.clicked(p1):
                 self.clear()
+                # self.mxn_1_button.setFill('DarkSalmon')
+                # self.cad_1_button.setFill('')
+                # self.eur_1_button.unhighlightButton
+                # self.gbp_1_button.unhighlightButton
+                # self.jpy_1_button.unhighlightButton
+                # self.aud_1_button.unhighlightButton
+                # self.brl_1_button.unhighlightButton
+                # self.nzd_1_button.unhighlightButton
+                # self.hkd_1_button.unhighlightButton
+                # self.usd_1_button.unhighlightButton
+                # self.mxn_2_button.unhighlightButton
+                # self.cad_2_button.unhighlightButton
+                # self.eur_2_button.unhighlightButton
+                # self.gbp_2_button.unhighlightButton
+                # self.jpy_2_button.unhighlightButton
+                # self.aud_2_button.unhighlightButton
+                # self.brl_2_button.unhighlightButton
+                # self.nzd_2_button.unhighlightButton
+                # self.hkd_2_button.unhighlightButton
+                # self.usd_2_button.unhighlightButton
             elif self.usd_1_button.clicked(p1):
                 country1 = 'USD'
+                # self.usd_1_button.setFill('Gold')
             elif self.nzd_1_button.clicked(p1):
                 country1 = 'NZD'
             elif self.cad_1_button.clicked(p1):
@@ -212,6 +220,7 @@ class Converter:
                 country1 = 'AUD'
             elif self.mxn_1_button.clicked(p1):
                 country1 = 'MXN'
+                self.mxn_1_button.highlightButton
             elif self.hkd_1_button.clicked(p1):
                 country1 = 'HKD'
             elif self.brl_1_button.clicked(p1):
