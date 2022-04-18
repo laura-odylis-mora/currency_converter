@@ -228,7 +228,7 @@ class Converter:
             elif self.quit_button.clicked(p1):
                 break
             else:  # write errror message saying pick what country's currency you starting with
-                print('some error message')
+                print('Country1 button error')
 
             p2 = win.getMouse()
 
@@ -257,7 +257,7 @@ class Converter:
             elif self.brl_2_button.clicked(p2):
                 country2 = 'BRL'
             else:
-                print("Change this to warning")
+                print("Country2 button error")
 
             p3 = win.getMouse()
 
@@ -268,10 +268,14 @@ class Converter:
             elif self.convert_button.clicked(p3):
                 # self.display_result(rate_of_currency.convert(
                 #     country1, country2,  Decimal(input_amount)))
-                self.display_result(
-                    rate_of_currency.get_rate(country1, country2))
+                #this displays the exchange rate, intermediary step
+                exchange_rate = rate_of_currency.get_rate(country1, country2)
+                self.display_result(exchange_rate)
+                #code to use exchange rate to convert and display final amount
+                #converted_amount = input_amount/exchange_rate
+                #self.display_result(converted_amount)
             else:
-                print("Change this to warning")
+                print("Convert/clear/quit button error")
 
 
 def main():
