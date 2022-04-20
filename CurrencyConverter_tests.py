@@ -1,13 +1,18 @@
 from CurrencyConverter import *
+import pytest
 # Using pytest to create testing suite for all essential functions of CurrencyConverter.py
 
-#need this?
-def test_get_entry_value_integer():
-    assert get_entry_value(self, 10) == 10
 
-#test type exchange_rate 
+def test_get_entry_value_integer(self):
+    assert self.get_entry_value(10) == 10.0
 
-#pytest -m
+
+def test_get_entry_value_letter(self):
+    assert self.get_entry_value("A") == None
+
+# test type exchange_rate
+
+#pytest -mc
 # pytrst interactive mode
 
 # Can use this To test instance of input

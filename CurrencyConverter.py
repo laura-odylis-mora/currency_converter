@@ -8,13 +8,8 @@
 
 # Library flag emojis
 # ^[https://flag.readthedocs.io/en/latest/]
-from signal import pause
 from graphics import *
 import flag
-
-# import keyboard
-from decimal import Decimal
-
 
 # to import everyting defined in the module
 from Button import Button
@@ -95,7 +90,6 @@ class Converter:
                                    'DarkSalmon', flag.flagize("United States USD :US:"))
 
     # Draw Buttons and Graphics Window
-
     def draw(self, win):
         self.convrect.draw(win)
         self.input_text.draw(win)
@@ -144,10 +138,8 @@ class Converter:
         return converted_amount
 
     # Display Result
-
     def display_result(self, result):
         self.result_text.setText(str(result))
-        # self.result_text.setText(float(result))
 
     # Clears the display of all text and unhilights buttons
     def clear(self):
@@ -156,11 +148,14 @@ class Converter:
 
     # Loop which runs the converter
     # Checks to see if the click was on a button
-
     def run(self, win):
+        is_country1_set = False
+        is_country2_set = False
+
+        country1 = ""
+        country2 = ""
         while True:
-            country1 = ""
-            country2 = ""
+
             p1 = win.getMouse()  # Waits for mouse click
 
             # Gets rate of currency
@@ -171,6 +166,8 @@ class Converter:
 
             if self.clear_button.clicked(p1):
                 self.clear()
+                is_country1_set = False
+                is_country2_set = False
                 self.mxn_1_button.changeFill('DarkSalmon')
                 self.cad_1_button.changeFill('DarkSalmon')
                 self.eur_1_button.changeFill('DarkSalmon')
@@ -195,79 +192,100 @@ class Converter:
                 break
             elif self.usd_1_button.clicked(p1):
                 country1 = 'USD'
+                is_country1_set = True
                 self.usd_1_button.changeFill('Gold')
             elif self.nzd_1_button.clicked(p1):
                 country1 = 'NZD'
+                is_country1_set = True
                 self.nzd_1_button.changeFill('Gold')
             elif self.cad_1_button.clicked(p1):
                 country1 = 'CAD'
+                is_country1_set = True
                 self.cad_1_button.changeFill('Gold')
             elif self.eur_1_button.clicked(p1):
                 country1 = 'EUR'
+                is_country1_set = True
                 self.eur_1_button.changeFill('Gold')
             elif self.gbp_1_button.clicked(p1):
                 country1 = 'GBP'
+                is_country1_set = True
                 self.gbp_1_button.changeFill('Gold')
             elif self.jpy_1_button.clicked(p1):
                 country1 = 'JPY'
+                is_country1_set = True
                 self.jpy_1_button.changeFill('Gold')
             elif self.aud_1_button.clicked(p1):
                 country1 = 'AUD'
+                is_country1_set = True
                 self.aud_1_button.changeFill('Gold')
             elif self.mxn_1_button.clicked(p1):
                 country1 = 'MXN'
+                is_country1_set = True
                 self.mxn_1_button.changeFill('Gold')
             elif self.hkd_1_button.clicked(p1):
                 country1 = 'HKD'
+                is_country1_set = True
                 self.hkd_1_button.changeFill('Gold')
             elif self.brl_1_button.clicked(p1):
                 country1 = 'BRL'
+                is_country1_set = True
                 self.brl_1_button.changeFill('Gold')
             elif self.usd_2_button.clicked(p1):
                 country2 = 'USD'
+                is_country2_set = True
                 self.usd_2_button.changeFill('Gold')
             elif self.nzd_2_button.clicked(p1):
                 country2 = 'NZD'
+                is_country2_set = True
                 self.nzd_2_button.changeFill('Gold')
             elif self.cad_2_button.clicked(p1):
                 country2 = 'CAD'
+                is_country2_set = True
                 self.cad_2_button.changeFill('Gold')
             elif self.eur_2_button.clicked(p1):
                 country2 = 'EUR'
+                is_country2_set = True
                 self.eur_2_button.changeFill('Gold')
             elif self.gbp_2_button.clicked(p1):
                 country2 = 'GBP'
+                is_country2_set = True
                 self.gbp_2_button.changeFill('Gold')
             elif self.jpy_2_button.clicked(p1):
                 country2 = 'JPY'
+                is_country2_set = True
                 self.jpy_2_button.changeFill('Gold')
             elif self.aud_2_button.clicked(p1):
                 country2 = 'AUD'
+                is_country2_set = True
                 self.aud_2_button.changeFill('Gold')
             elif self.mxn_2_button.clicked(p1):
                 country2 = 'MXN'
+                is_country2_set = True
                 self.mxn_2_button.changeFill('Gold')
             elif self.hkd_2_button.clicked(p1):
                 country2 = 'HKD'
+                is_country2_set = True
                 self.hkd_2_button.changeFill('Gold')
             elif self.brl_2_button.clicked(p1):
                 country2 = 'BRL'
+                is_country2_set = True
                 self.brl_2_button.changeFill('Gold')
             elif self.convert_button.clicked(p1):
-                # self.display_result(rate_of_currency.convert(
-                #     country1, country2,  Decimal(input_amount)))
-                # this displays the exchange rate, intermediary step
-                exchange_rate = rate_of_currency.get_rate(country1, country2)
+                print("Button \"convert\" clicked")
+                # Tests if starting and ending currencies have been selected before converted
+                if is_country1_set == True and is_country2_set == True:
+                    exchange_rate = rate_of_currency.get_rate(
+                        country1, country2)
 
-                self.display_result(exchange_rate)
-
-                # code to use exchange rate to convert and display final amount
-                final_amount = round(self.convert_function(
-                    input_amount, exchange_rate), 2)
-
-                self.display_result(final_amount)
+                    # code to use exchange rate to convert and display final amount
+                    final_amount = round(self.convert_function(
+                        input_amount, exchange_rate), 2)
+                    # print converted amount in display box
+                    self.display_result(final_amount)
+                else:
+                    print("Make sure you have selected starting and ending currencies.")
             else:
-                print("Convert/clear/quit button error")
+                print("Button error")
 
 
 def main():
