@@ -269,6 +269,8 @@ class Converter:
             else:
                 print("Convert/clear/quit button error")
 
+                # FAKE STUFF
+
 
 def main():
     # Creates a window and puts the converter object in it
