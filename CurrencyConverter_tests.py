@@ -1,9 +1,11 @@
 from CurrencyConverter import *
 # Using pytest to create testing suite for all essential functions of CurrencyConverter.py
 
-
+#need this?
 def test_get_entry_value_integer():
     assert get_entry_value(self, 10) == 10
+
+#test type exchange_rate 
 
 #pytest -m
 # pytrst interactive mode
@@ -18,8 +20,3 @@ def test_get_entry_value_integer():
     #     # while check_int == False:
     #     #     self.result_text.setText("Input must be a positive integer.")
     #     #     x = int(entry.getText())
-
-
-check_float = isinstance(exchange_rate, float)
-                if check_float == True:
-                    print("Exchange rate is a type float")
