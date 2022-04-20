@@ -156,7 +156,7 @@ class Converter:
         country2 = ""
         while True:
 
-            p1 = win.getMouse()  # Waits for mouse click
+            p = win.getMouse()  # Waits for mouse click
 
             # Gets rate of currency
             rate_of_currency = CurrencyRates()
@@ -164,7 +164,7 @@ class Converter:
             # Input starting amount
             input_amount = self.get_entry_value(self.input_text)
 
-            if self.clear_button.clicked(p1):
+            if self.clear_button.clicked(p):
                 self.clear()
                 is_country1_set = False
                 is_country2_set = False
@@ -188,89 +188,89 @@ class Converter:
                 self.nzd_2_button.changeFill('DarkSalmon')
                 self.hkd_2_button.changeFill('DarkSalmon')
                 self.usd_2_button.changeFill('DarkSalmon')
-            elif self.quit_button.clicked(p1):
+            elif self.quit_button.clicked(p):
                 break
-            elif self.usd_1_button.clicked(p1):
+            elif self.usd_1_button.clicked(p):
                 country1 = 'USD'
                 is_country1_set = True
                 self.usd_1_button.changeFill('Gold')
-            elif self.nzd_1_button.clicked(p1):
+            elif self.nzd_1_button.clicked(p):
                 country1 = 'NZD'
                 is_country1_set = True
                 self.nzd_1_button.changeFill('Gold')
-            elif self.cad_1_button.clicked(p1):
+            elif self.cad_1_button.clicked(p):
                 country1 = 'CAD'
                 is_country1_set = True
                 self.cad_1_button.changeFill('Gold')
-            elif self.eur_1_button.clicked(p1):
+            elif self.eur_1_button.clicked(p):
                 country1 = 'EUR'
                 is_country1_set = True
                 self.eur_1_button.changeFill('Gold')
-            elif self.gbp_1_button.clicked(p1):
+            elif self.gbp_1_button.clicked(p):
                 country1 = 'GBP'
                 is_country1_set = True
                 self.gbp_1_button.changeFill('Gold')
-            elif self.jpy_1_button.clicked(p1):
+            elif self.jpy_1_button.clicked(p):
                 country1 = 'JPY'
                 is_country1_set = True
                 self.jpy_1_button.changeFill('Gold')
-            elif self.aud_1_button.clicked(p1):
+            elif self.aud_1_button.clicked(p):
                 country1 = 'AUD'
                 is_country1_set = True
                 self.aud_1_button.changeFill('Gold')
-            elif self.mxn_1_button.clicked(p1):
+            elif self.mxn_1_button.clicked(p):
                 country1 = 'MXN'
                 is_country1_set = True
                 self.mxn_1_button.changeFill('Gold')
-            elif self.hkd_1_button.clicked(p1):
+            elif self.hkd_1_button.clicked(p):
                 country1 = 'HKD'
                 is_country1_set = True
                 self.hkd_1_button.changeFill('Gold')
-            elif self.brl_1_button.clicked(p1):
+            elif self.brl_1_button.clicked(p):
                 country1 = 'BRL'
                 is_country1_set = True
                 self.brl_1_button.changeFill('Gold')
-            elif self.usd_2_button.clicked(p1):
+            elif self.usd_2_button.clicked(p):
                 country2 = 'USD'
                 is_country2_set = True
                 self.usd_2_button.changeFill('Gold')
-            elif self.nzd_2_button.clicked(p1):
+            elif self.nzd_2_button.clicked(p):
                 country2 = 'NZD'
                 is_country2_set = True
                 self.nzd_2_button.changeFill('Gold')
-            elif self.cad_2_button.clicked(p1):
+            elif self.cad_2_button.clicked(p):
                 country2 = 'CAD'
                 is_country2_set = True
                 self.cad_2_button.changeFill('Gold')
-            elif self.eur_2_button.clicked(p1):
+            elif self.eur_2_button.clicked(p):
                 country2 = 'EUR'
                 is_country2_set = True
                 self.eur_2_button.changeFill('Gold')
-            elif self.gbp_2_button.clicked(p1):
+            elif self.gbp_2_button.clicked(p):
                 country2 = 'GBP'
                 is_country2_set = True
                 self.gbp_2_button.changeFill('Gold')
-            elif self.jpy_2_button.clicked(p1):
+            elif self.jpy_2_button.clicked(p):
                 country2 = 'JPY'
                 is_country2_set = True
                 self.jpy_2_button.changeFill('Gold')
-            elif self.aud_2_button.clicked(p1):
+            elif self.aud_2_button.clicked(p):
                 country2 = 'AUD'
                 is_country2_set = True
                 self.aud_2_button.changeFill('Gold')
-            elif self.mxn_2_button.clicked(p1):
+            elif self.mxn_2_button.clicked(p):
                 country2 = 'MXN'
                 is_country2_set = True
                 self.mxn_2_button.changeFill('Gold')
-            elif self.hkd_2_button.clicked(p1):
+            elif self.hkd_2_button.clicked(p):
                 country2 = 'HKD'
                 is_country2_set = True
                 self.hkd_2_button.changeFill('Gold')
-            elif self.brl_2_button.clicked(p1):
+            elif self.brl_2_button.clicked(p):
                 country2 = 'BRL'
                 is_country2_set = True
                 self.brl_2_button.changeFill('Gold')
-            elif self.convert_button.clicked(p1):
+            elif self.convert_button.clicked(p):
                 print("Button \"convert\" clicked")
                 # Tests if starting and ending currencies have been selected before converted
                 if is_country1_set == True and is_country2_set == True:
