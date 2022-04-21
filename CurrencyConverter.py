@@ -90,6 +90,7 @@ class Converter:
                                    'DarkSalmon', flag.flagize("United States USD :US:"))
 
     # Draw Buttons and Graphics Window
+
     def draw(self, win):
         self.convrect.draw(win)
         self.input_text.draw(win)
