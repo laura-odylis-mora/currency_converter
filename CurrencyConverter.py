@@ -19,6 +19,9 @@ from EasyRectangle import EasyRectangle
 #  ^[https://forex-python.readthedocs.io/en/latest/index.html]
 from forex_python.converter import CurrencyRates
 
+# Create object of CurrencyRates class from forex-python
+currencyRates = CurrencyRates()
+
 
 class Converter:
     def __init__(self):
@@ -147,8 +150,21 @@ class Converter:
         self.input_text.setText('')
         self.result_text.setText('')
 
+    # Method to get exchange rate from CurrencyRates object
+    def get_exchange_rate(self, country1, country2):
+        return currencyRates.get_rate(country1, country2)
+
+    # Method to get input amount from user
+    def get_input_amount(self):
+        return self.get_entry_value(self.input_text)
+
+    # Rounding the number to two decimal places
+    def round_two_places(self, num):
+        return round(num, 2)
+
     # Loop which runs the converter
     # Checks to see if the click was on a button
+
     def run(self, win):
         is_country1_set = False
         is_country2_set = False
@@ -159,11 +175,8 @@ class Converter:
 
             p = win.getMouse()  # Waits for mouse click
 
-            # Gets rate of currency
-            rate_of_currency = CurrencyRates()
-
             # Input starting amount
-            input_amount = self.get_entry_value(self.input_text)
+            input_amount = self.get_input_amount()
 
             if self.clear_button.clicked(p):
                 self.clear()
@@ -275,11 +288,10 @@ class Converter:
                 print("Button \"convert\" clicked")
                 # Tests if starting and ending currencies have been selected before converted
                 if is_country1_set == True and is_country2_set == True:
-                    exchange_rate = rate_of_currency.get_rate(
+                    exchange_rate = self.get_Exchange_rate(
                         country1, country2)
-
                     # code to use exchange rate to convert and display final amount
-                    final_amount = round(self.convert_function(
+                    final_amount = self.round_two_places(self.convert_function(
                         input_amount, exchange_rate), 2)
                     # print converted amount in display box
                     self.display_result(final_amount)

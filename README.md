@@ -31,7 +31,28 @@ The application should be accessed by first downloading all files, and then runn
 9. This means that to convert starting currency to ending currency using Exchange Rate  would be:
 		Starting Currency Amount / Exchange Rate = Ending Currency Amount
 
-# Instructions to run test:
 
-- install pytest
-- ```$ code here pytest install```
+# Instructions to run test:
+Note that one test will always fail. 
+```FAILED test_CurrencyConverter.py::test - graphics.GraphicsError: getMouse in closed window```
+This error is due to closing out of the graphics window in order to continue the other tests. Future goal would be to find new way to run tests using the ```graphics.py``` library.
+
+1. Change directory to folder you will keep all CurrencyConverter.py files:
+    - EasyRectangle.py
+    - Button.py
+    - graphics.py
+    - CurrencyConverter.py
+    - test_CurrencyConverter.py
+   All files will be included but are also included in the GitHub repository: https://github.com/laura-odylis-mora/currency_converter
+2. Make sure all following libraries are installed in the command line:
+      - flag
+      - forex-python
+      - pytest
+   To do this run the follow commands:
+      ```$ pip install emoji-country-flag```
+      ```$ pip install forex-python```
+      ```$ pip install -U pytest```
+3. In terminal run:
+   ```$ pytest test_CurrencyConverter.py```
+4. Exit out of Currency Converter Window using exit button (red "x" button on top right corner of window)
+5. Exit out of graphics window using exit button (red "x" on top left side of graphics window)
