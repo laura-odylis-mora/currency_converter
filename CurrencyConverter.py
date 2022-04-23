@@ -288,11 +288,11 @@ class Converter:
                 print("Button \"convert\" clicked")
                 # Tests if starting and ending currencies have been selected before converted
                 if is_country1_set == True and is_country2_set == True:
-                    exchange_rate = self.get_Exchange_rate(
+                    exchange_rate = self.get_exchange_rate(
                         country1, country2)
                     # code to use exchange rate to convert and display final amount
                     final_amount = self.round_two_places(self.convert_function(
-                        input_amount, exchange_rate), 2)
+                        input_amount, exchange_rate))
                     # print converted amount in display box
                     self.display_result(final_amount)
                 else:
